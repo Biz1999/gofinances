@@ -1,15 +1,39 @@
 import React from 'react';
-
 import {
-  View
-} from 'react-native';
+  Container,
+  Header,
+  UserWrapper,
+  UserInfo,
+  Photo,
+  User,
+  UserGreeting,
+  UserName,
+  Icon,
+  HighlightCards
+} from './styles';
 
-import { styles } from './styles';
+import { HighlightCard } from '../../components/HighlightCard';
 
 export function Dashboard() {
   return (
-    <View>
-
-    </View>
+    <Container>
+      <Header>
+        <UserWrapper>
+          <UserInfo>
+            <Photo source={{ uri: 'https://avatars.githubusercontent.com/u/56764133?v=4' }} />
+            <User>
+              <UserGreeting>Olá,</UserGreeting>
+              <UserName>Alessandro</UserName>
+            </User>
+          </UserInfo>
+          <Icon name="power" />
+        </UserWrapper>
+      </Header>
+      <HighlightCards>
+        <HighlightCard />
+        <HighlightCard />
+        <HighlightCard />
+      </HighlightCards>
+    </Container>
   );
 }
