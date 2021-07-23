@@ -6,7 +6,7 @@ import {
   Category,
 } from './styles';
 
-interface Props {
+type Props = {
   title: string;
   onPress: () => void;
 }
