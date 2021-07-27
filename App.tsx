@@ -12,10 +12,13 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { Routes } from './src/routes';
 
 import { AppRoutes } from './src/routes/app.routes';
 import theme from './src/global/styles/theme';
+import { SignIn } from './src/screens/SignIn';
+
+import { AuthProvider, useAuth } from './src/hooks/auth';
 
 
 
@@ -26,19 +29,21 @@ export default function App() {
     Poppins_700Bold
   });
 
-  if (!fontsLoaded)
+  const { userStorageLoading } = useAuth();
+
+  if (!fontsLoaded || userStorageLoading)
     return <AppLoading />
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <StatusBar
-          translucent
-          backgroundColor="transparent"
-          barStyle="light-content"
-        />
-        <AppRoutes />
-      </NavigationContainer>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="light-content"
+      />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </ThemeProvider>
   );
 }
